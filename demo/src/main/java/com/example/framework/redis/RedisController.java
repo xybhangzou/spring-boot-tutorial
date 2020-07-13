@@ -17,6 +17,7 @@ public class RedisController {
     @RequestMapping("/put")
     @ResponseBody
     public String put(){
+
         Customer customer = new Customer();
         customer.setId(1);
         customer.setName("小明");
