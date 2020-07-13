@@ -1,17 +1,15 @@
-package com.xnf.framework.web;
+package com.example.framework.web;
 
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HelloWorld {
 
-    @RequestMapping(value="/hello",method = RequestMethod.GET)
-    @ResponseBody
+    @RequestMapping(value="/hello")
     public String hello(){
-        String sentence = "Hello world !";
+        String sentence = "Hello worrrrld !";
         System.out.println("HelloWorld.hello");
         return  sentence;
     }
