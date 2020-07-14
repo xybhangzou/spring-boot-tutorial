@@ -1,0 +1,33 @@
+#application.properties与application.yml 相比，yml更加简洁， 多层级配置不会产生重复代码。
+#使用缩进表示层级关系；字符串可以不用引号标注；止使用tab缩进，只能使用空格键。
+# redis配置
+spring:
+  redis:
+    host: 49.232.23.20 # 默认localhost，需要远程服务器需要修改
+    port: 6379  # 默认6379，如果不一致需要修改
+    database: 0 # 代表连接的数据库索引，默认为0,
+  devtools: #设置spring boot 热部署，即修改类、配置文件,保存后，应用会重启;修改页面，应用不会重启，但会重新加载，页面会刷新
+    restart:
+      additional-paths: src/main/java #重启目录
+      exclude: WEB-INF/**
+      enabled: true #设置开启热部署
+    freemarker:
+      cache: false    #页面不加载缓存，修改即时生效
+  thymeleaf:
+    cache: false #实现页面热部署，即页面修改后会立即生效
+  resources:  #静态资源路径的默认值(如果希望保留默认路径，那就要先写上之前所有值，再最后加上新的路径。)
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,classpath:/templates/
+
+# 修改服务端口（选定开发环境）
+server:
+  port: 8081
+#属性复值，测试应用获取。
+user:
+  nickname: eric
+  age: 3355
+
+
+
+
+
+
