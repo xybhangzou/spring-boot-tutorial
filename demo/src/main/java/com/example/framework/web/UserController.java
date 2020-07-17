@@ -1,6 +1,7 @@
 package com.example.framework.web;
 
 import com.example.framework.entity.User;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
