@@ -36,7 +36,7 @@ public class MyAspect {
     }
 
     // 环绕通知
-    @Around(value = "execution(public * com.yiidian.service.impl.CustomerServiceImpl.*(..))")
+    @Around(value = "execution(public * com.example.framework.aop.CustomerServiceImpl.*(..))")
     public void around(ProceedingJoinPoint pjp) {
         System.out.println("前置通知--前面代码");
         //执行目标对象方法
