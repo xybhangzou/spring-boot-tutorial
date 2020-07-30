@@ -8,10 +8,19 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 
+/**
+ * 测试上传
+ *
+ * @author xnf
+ * @date 2020/7/27
+ */
 @RestController
 public class UploadController {
-    /*
-     * 接收文件
+    /**
+     *
+     * @param file
+     * @return
+     * @throws Exception
      */
     @RequestMapping(value = "/uploadAttach",method = RequestMethod.POST)
     public String upload(@RequestParam("attach") MultipartFile file) throws Exception{
@@ -21,7 +30,6 @@ public class UploadController {
 
         //保存到硬盘
         file.transferTo(new File("c:/"+file.getOriginalFilename()));
-
         return "上传成功";
     }
 }

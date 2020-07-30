@@ -1,7 +1,7 @@
-package com.example.framework.algorithm;
+package com.example.framework.algorithmleetcode;
 
 /**
- * 记录数组排序各种类型
+ * 排序
  *
  * @author xnf
  * @date 2020/07/22
