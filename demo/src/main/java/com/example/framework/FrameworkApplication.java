@@ -4,8 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 
-import java.util.Arrays;
+import java.sql.Array;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @SpringBootApplication
 @ServletComponentScan
@@ -16,25 +18,31 @@ public class FrameworkApplication {
     }
 }
 
-class Test{
+class VolatileTest{
+
+    public static AtomicInteger race = new AtomicInteger(0);
+    public static void increase(){
+        race.incrementAndGet();
+    }
+
+    private static final int THREADS_COUNT = 20;
     public static void main(String[] args) {
-        Object a = new Object();
-a.getPrintInfo();
-        int[] myArray = { 1, 2, 3 };
-        List myList = Arrays.asList(myArray);
-        System.out.println(myList.size());
-        System.out.println(myList.get(0));
-        System.out.println(myList.get(1));
-        int [] array=(int[]) myList.get(0);
-        System.out.println(array[0]);
-    }
+        Thread [] threads = new Thread[THREADS_COUNT ];
+        for(int i = 0 ;i< THREADS_COUNT;i++){
+            threads[i] =  new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    for(int i = 0 ;i < 10000;i++){
+                        increase();
+                    }
+                }
 
-}
-class Object{
-    private String name;
-    private int age;
-    public void getPrintInfo(){
-        System.out.println("Object.getPrintInfo");
+            });
+            threads[i].start();
+        }
+        while(Thread.activeCount() >1 ){
+                Thread.yield();
+        }
+        System.out.println(race);
     }
-
 }
